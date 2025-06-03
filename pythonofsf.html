@@ -16,6 +16,8 @@
     <form id="userForm">
       <input type="text" id="name" placeholder="Your Name" required>
       <input type="text" id="hobby" placeholder="Your Hobby" required>
+      <input type='text' id='email' placeholder='Your Email' required>
+
       <button type="submit" onclick = "aiii(name)" >Submit</button>
     </form>
 
@@ -26,17 +28,53 @@
         event.preventDefault();
         const name = document.getElementById('name').value;
         const hobby = document.getElementById('hobby').value;
-
-        if (name && hobby) {
+        const email = document.getElementById('email').value;
+        if (name && hobby && email) {
           const userList = document.getElementById('userList');
           const listItem = document.createElement('li');
           listItem.textContent = `${name} - ${hobby}`;
           userList.appendChild(listItem);
-
          document.getElementById('name').value = '';
-          document.getElementById('hobby').value = '';s
+          document.getElementById('hobby').value = '';
+          document.getElementById('email').value = '';
+        
+        }
+        else {
+          alert('Please fill in the empty fields');
         }
       })
+    </script>
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        const userList = document.getElementById('userList');
+        const users= JSON.parse(localStorage.getItem('users')) || [];
+        users.forEach(function(user) {
+          const listItem = document.creatElement('li');
+          listItem.textContent = `${user.name} - ${user.hobby} - ${user.email}`;
+          userList.appendChild(listItem);
+        });
+      });
+      document.getElementById('userForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const hobby = document.getElementById('hobby').value;
+        const email = document.getElementById('email').value;
+        if (name && hobby && email) {
+          const users = JSON.parse(localStorage.getItem('users')) || [];
+          users.push({ name, hobby , email });
+          localStorage.setItem('users', JSON.strinify(users));
+          const userList = document.getElementById('userList');
+          const listItem = document.createElement('li');
+          listItem.textContent = `${name} - ${hobby} - ${email}`;
+          userList.appendChild(listItem);
+          document.getElementById('name').value = '';
+          document.getElementById('hobby').value = '';
+          document.getElementById('email').value = '';
+        } else {
+          alert('Please fill in all fields');
+        }
+        }
+      );
     </script>
   </main>
 
