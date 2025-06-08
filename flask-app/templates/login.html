@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Pursuit{% endblock %}
+
+{% block content %}
+<script>
+document.getElementById('userForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const hobby = document.getElementById('hobby').value;
+    const email = document.getElementById('email').value;
+    if (name && hobby && email) {
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        users.push({ name, hobby, email });
+        localStorage.setItem('users', JSON.stringify(users));
+        const userList = document.getElementById('userList');
+        const listItem = document.createElement('li');
+        listItem.textContent = `${name} - ${hobby} - ${email}`;
+        userList.appendChild(listItem);
+        document.getElementById('name').value = '';
+        document.getElementById('hobby').value = '';
+        document.getElementById('email').value = '';
+    } else {
+        alert('Please fill in all fields');
+    }
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+    const userList = document.getElementById('userList');
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    users.forEach(function(user) {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${user.name} - ${user.hobby} - ${user.email}`;
+        userList.appendChild(listItem);
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+{% endblock %}
