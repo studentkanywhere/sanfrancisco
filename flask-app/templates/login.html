@@ -23,6 +23,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
         alert('Login successful!');
         // Optionally, store session info or redirect
         window.location.href = "/profile";
+        sessionStorage.setItem('currentUserIndex', users.indexOf(user));
     } else {
         alert('Invalid email or password.');
     }

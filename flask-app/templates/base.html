@@ -23,12 +23,98 @@
                 </ul>
                 <div class="button-row">
                     <a href="/login" class="btn btn-outline-light me-2" role="button">Login</a>
-                    <button type="button" class="btn btn-warning" >Sign-up</button>
+                    <a href="/signup" class="btn btn-warning" role="button">Sign-up</a>
                 </div>
             </div>
         </div>
     </header>
+    <style>
+    #darkModeToggle {
+         position: fixed;
+         bottom: 30px;
+         right: 30px;
+         z-index: 9999;
+         background: #222;
+         color: #fff;
+         border: none;
+         border-radius: 50%;
+         width: 48px;
+         height: 48px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+         cursor: pointer;
+         font-size: 1.5em;
+         transition: background 0.3s, color 0.3s;
 
+        }    
+    #darkModeToggle.light{
+        background: #fff;
+        color: #222;
+        border: 1px solid #ccc;
+        
+    }
+      </style>
+      <button id="darkModeToggle" title="Toggle Dark Mode">
+        <span id="darkModeIcon" >🌙</span>
+      </button>
+      <script>
+        const toggleBtn = document.getElementById('darkModeToggle');
+        const icon = document.getElementById('darkModeIcon');
+        function setDarkMode(on) {
+           if(on) {
+            document.body.classList.add('dark-mode');
+            toggleBtn.classList.remove('light');
+            icon.textContent = '🌙';
+            localStorage.setItem('darkMode', 'on');
+           }
+            else {
+        document.body.classList.remove('dark-mode');
+        toggleBtn.classList.add('light');
+        icon.textContent = '☀️';
+        localStorage.setItem('darkMode', 'off');
+    }
+}
+toggleBtn.onclick = function() {
+    setDarkMode(!document.body.classList.contains('dark-mode'));
+};
+// On load, set mode from localStorage
+if (localStorage.getItem('darkMode') === 'on') {
+    setDarkMode(true);
+} else {
+    setDarkMode(false);
+     }
+ 
+     const style = document.createElement('style');
+style.innerHTML = `
+body.dark-mode {
+    background: #181818 !important;
+    color: #f1f1f1 !important;
+}
+body.dark-mode .container, body.dark-mode .card, body.dark-mode main, body.dark-mode .form-control {
+    background: #232323 !important;
+    color: #f1f1f1 !important;
+}
+body.dark-mode .navbar, body.dark-mode header, body.dark-mode footer {
+    background: #222 !important;
+    color: #fff !important;
+}
+body.dark-mode .btn, body.dark-mode .btn-primary, body.dark-mode .btn-outline-light {
+    background: #333 !important;
+    color: #fff !important;
+    border-color: #444 !important;
+}
+body.dark-mode input, body.dark-mode textarea, body.dark-mode select {
+    background: #232323 !important;
+    color: #f1f1f1 !important;
+    border-color: #444 !important;
+}
+`;
+document.head.appendChild(style);
+
+
+        </script>
     <main>
         {% block content %}{% endblock %}
     </main>

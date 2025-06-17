@@ -1,19 +1,32 @@
 {% extends "base.html" %}
 
-{% block title %}Pursuit{% endblock %}cccccc
+{% block title %}Pursuit{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
     <header>
         <h1>Welcome to Pursuit!!</h1>
         <p>This is an app where users are free to socialise about their various hobbies and interests.</p>
-        <p>Feel free to login if you already have an account, or sign up to get started!</p>
-        <p>Once logged in, you can create your profile and share your hobbies with others and find people with the same interests as you.</p>
+        <p>Feel free to login if you already have an account or, Sign up to get started!</p>
+        <p>Once you sign in, keep in mind your password for easy login later on.</p>
+        <p>Once logged in, you can customize your profile and share your hobbies with others and find people with the same interests as you.</p>
         <p>Check out the list of users below to see who else is part of the Pursuit community!</p>
         <p>Happy Pursuing!</p>
 
+        
     </header>
-
+    
+    <div id="mainCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='1.jpg') }}" class="d-block w-100" alt="Image 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Welcome to pursuit!</h5>
+                    <p>Connect with people who share your hobbies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     
 
     <h2>Users</h2>

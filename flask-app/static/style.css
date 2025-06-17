@@ -4,7 +4,7 @@ body {
 h1 {
     color:maroon;
     text-align: center;
-    font-size: 4em;
+    font-size: 5em;
     margin-top: 20px;
     font: bold 2.5em;
     font-family: 'Times New Roman', Times, serif;
@@ -30,15 +30,15 @@ p {
     font-size: 1em;
     line-height: 1.7em;
     margin: 20px;
-    text-align: left;
+    text-align: center;
     font-family: 'Times New Roman', Times, serif;
     text-indent: 20px;
 }
 form {
-    background-color: #a8c8e4;
+    background-color: #aed3f3;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(115, 156, 216, 0.1);
     max-width: 600px;
     margin-bottom: 20px;
     margin-left: auto;
