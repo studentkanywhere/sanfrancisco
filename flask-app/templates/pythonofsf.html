@@ -3,6 +3,49 @@
 {% block title %}Pursuit{% endblock %}
 
 {% block content %}
+
+
+    <div id="mainCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='1.jpg') }}" class="d-block w-100" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='2.jpg') }}" class="d-block w-100" alt="Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='3.jpg') }}" class="d-block w-100" alt="Image 3">
+            </div>
+            <div class ="carousel-item">
+                <img src="{{ url_for('static', filename='4.jpg') }}" class="d-block w-100" alt="Image 4">
+            </div>
+            <div class ="carousel-item">
+                <img src="{{ url_for('static', filename='5.jpg') }}" class="d-block w-100" alt="Image 5">
+            </div>
+            <div class ="carousel-item">
+                <img src="{{ url_for('static', filename='6.jpg') }}" class="d-block w-100" alt="Image 6">
+            </div>
+            <div class ="carousel-item">
+                <img src="{{ url_for('static', filename='7.jpg') }}" class="d-block w-100" alt="Image 7">
+            </div>
+            <div class ="carousel-item">
+                <img src="{{ url_for('static', filename='8.jpg') }}" class="d-block w-100" alt="Image 8">
+            </div>
+            <div class ="carousel-item">
+                <img src="{{ url_for('static', filename='9.jpg') }}" class="d-block w-100" alt="Image 9">
+            </div>
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+           <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
 <div class="container mt-4">
     <header>
         <h1>Welcome to Pursuit!!</h1>
@@ -16,20 +59,9 @@
         
     </header>
     
-    <div id="mainCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ url_for('static', filename='1.jpg') }}" class="d-block w-100" alt="Image 1">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Welcome to pursuit!</h5>
-                    <p>Connect with people who share your hobbies.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
 
     <h2>Users</h2>
+     <p id="usersp">Here is a list of users' profiles who have already signed up.</p>
     <ul id="userList"></ul>
 </div>
 
