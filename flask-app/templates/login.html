@@ -3,45 +3,31 @@
 {% block title %}Login - Pursuit{% endblock %}
 
 {% block content %}
+
 <header>
-    <p>Enter your name and favorite hobby below</p>
+    <p>Enter your email and password below</p>
 </header>
 <form id="userForm" class="mb-4">
-         <input type="text" id="email" class="form-control mb-2" placeholder="Your Email" required>
-         <input type="password" id="password" class="form-control mb-2" placeholder="Your Password" required>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <input type="email" id="email" class="form-control mb-2" placeholder="Your Email" required>
+    <input type="password" id="password" class="form-control mb-2" placeholder="Your Password" required>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 <script>
 document.getElementById('userForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    const password = document.getElementById('password').value;
     const email = document.getElementById('email').value;
-    if (password && email) {
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        users.push({ password, email });
-        localStorage.setItem('users', JSON.stringify(users));
-        const userList = document.getElementById('userList');
-        const listItem = document.createElement('li');
-        listItem.textContent = `${password} - ${email}`;
-        userList.appendChild(listItem);
-        document.getElementById('password').value = '';
-        document.getElementById('email').value = '';
+    const password = document.getElementById('password').value;
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(u => u.email === email && u.password === password);
+    if (user) {
+        alert('Login successful!');
+        // Optionally, store session info or redirect
+        window.location.href = "/profile";
     } else {
-        alert('Please fill in all fields');
+        alert('Invalid email or password.');
     }
 });
-
-window.addEventListener('DOMContentLoaded', function() {
-    const userList = document.getElementById('userList');
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    users.forEach(function(user) {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${user.password} - ${user.email}`;
-        userList.appendChild(listItem);
-    });
-});
 </script>
-
 
 
 
