@@ -1,20 +1,78 @@
+{% extends "base.html" %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='stylelogin.css') }}">
+{% block title %}Sign In/Sign Up{% endblock %}
 
-<head>
-	<title>Login & Registration Form</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
-</head>
-<body>
+{% block content %}
+
+  <meta charset="UTF-8">
+  <title>Login & Registration Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link 
+    href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" 
+    rel="stylesheet"
+  >
+  <link 
+    rel="stylesheet" 
+    href="{{ url_for('static', filename='stylelogin.css') }}"
+  >
+
   <div class="cont">
+    <!-- mobile toggle ALWAYS visible -->
     <div class="mobile-toggle">
-  <button id="showSignIn" type="button" class="submit">Sign In</button>
-  <button id="showSignUp" type="button" class="submit">Sign Up</button>
-</div>
-    <div class="form sign-in">
+      <button id="showSignIn" type="button" class="submit">Sign In</button>
+      <button id="showSignUp" type="button" class="submit">Sign Up</button>
+    </div>
+
+    <!-- MOBILE SLIDER -->
+    <div class="form-wrapper">
+      <div class="form-container">
+        <!-- mobile sign-in -->
+        <div class="form sign-in mobile">
+          <h2>Sign In</h2>
+          <label>
+            <span>Email Address</span>
+            <input type="email" name="email">
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" name="password">
+          </label>
+          <button class="submit" type="button">Sign In</button>
+          <div class="social-media">
+            <ul>
+              <li>
+                <img src="{{ url_for('static', filename='1ou.jpg') }}" alt="Social">
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- mobile sign-up -->
+        <div class="form sign-up mobile">
+          <h2>Sign Up</h2>
+          <label>
+            <span>Name</span>
+            <input type="text" name="name">
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email">
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" name="password">
+          </label>
+          <label>
+            <span>Confirm Password</span>
+            <input type="password" name="confirm_password">
+          </label>
+          <button class="submit" type="button">Sign Up Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESKTOP SIGN-IN -->
+    <div class="form sign-in desktop">
       <h2>Sign In</h2>
       <label>
         <span>Email Address</span>
@@ -25,51 +83,57 @@
         <input type="password" name="password">
       </label>
       <button class="submit" type="button">Sign In</button>
-
       <div class="social-media">
         <ul>
-          <li><img src="{{ url_for('static', filename='1ou.jpg') }}"></li>
+          <li>
+            <img src="{{ url_for('static', filename='1ou.jpg') }}" alt="Social">
+          </li>
         </ul>
       </div>
     </div>
 
-    <div class="sub-cont">
+    <!-- DESKTOP PANEL (original) -->
+    <div class="sub-cont desktop">
       <div class="img">
         <div class="img-text m-up">
           <h1>New here?</h1>
-          <p>sign up and discover</p>
+          <p>Sign up and discover</p>
         </div>
         <div class="img-text m-in">
           <h1>One of us?</h1>
-          <p>just sign in</p>
+          <p>Just sign in</p>
         </div>
         <div class="img-btn">
           <span class="m-up">Sign Up</span>
           <span class="m-in">Sign In</span>
         </div>
       </div>
-      <div class="form sign-up">
+      <!-- original desktop sign-up -->
+      <div class="form sign-up desktop">
         <h2>Sign Up</h2>
         <label>
           <span>Name</span>
-          <input type="text">
+          <input type="text" name="name">
         </label>
         <label>
           <span>Email</span>
-          <input type="email">
+          <input type="email" name="email">
         </label>
         <label>
           <span>Password</span>
-          <input type="password">
+          <input type="password" name="password">
         </label>
         <label>
           <span>Confirm Password</span>
-          <input type="password">
+          <input type="password" name="confirm_password">
         </label>
-        <button type="button" class="submit">Sign Up Now</button>
+        <button class="submit" type="button">Sign Up Now</button>
       </div>
     </div>
   </div>
-<script src="{{ url_for('static', filename='app.js') }}"></script>
-</body>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+
+{% endblock %}
 

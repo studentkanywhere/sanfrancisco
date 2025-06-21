@@ -128,24 +128,38 @@ h2 {
 
 /* Navbar styles */
 #navbar {
-    background: #4B2E19; /* dark brown */
+    background: #241103de; /* dark brown */
     padding: 0;
     width: 100%;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    max-height: 30px;
+    max-height: 40px;
     min-height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    }
+.navbody{
+    padding-top: 40px;
 }
-
 .navbar-row {
     display: flex;
     align-items: center;
-    justify-content: center; /* center all items horizontally */
+    justify-content: space-between; 
     gap: 1.2rem;
     width: 100%;
     height: 30px;
+}
+.navbar-account {
+    margin-left: auto;
+}
+
+.navbar-account .nav-link {
+    border: none !important;
 }
 .navbar-logo{
     display: none;
@@ -164,6 +178,7 @@ h2 {
     line-height: 30px;
     padding: 0 8px;
     transition: color 0.2s;
+    border: none !important;
 }
 .navbar-links .nav-link:hover{
     color:#ffc107;
@@ -173,7 +188,7 @@ h2 {
     align-items: center;
     height: 100%;
 }
-navbar-search .search-bar{
+.navbar-search .search-bar{
     height:22px;
     font-size: 1em;
     padding:0 8px;
@@ -231,6 +246,11 @@ navbar-search .search-bar{
     max-width: 160px;
     transition: width 0.2s;
 }
+.accountDropdown{
+    align-items: right !important;
+    justify-content: right !important;
+    
+}
 /*Responsive part of the navbar:*/
 @media (max-width: 700px) {
     #navbar, .navbar-row{
@@ -244,6 +264,11 @@ navbar-search .search-bar{
         gap:0.3rem;
         padding: 0;
         height:30px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .navbar-account{
+        margin-left:auto;
     }
     .navbar-links, .navbar-buttons, .navbar-search{
         justify-content: center;
@@ -260,7 +285,7 @@ navbar-search .search-bar{
         gap: 0.7rem;
         margin-bottom: 0.5 rem;
     }
-    .navber-search .search-bar{
+    .navbar-search .search-bar{
         width: 70vw;
         max-width: 200px;
         margin: 0 auto;
