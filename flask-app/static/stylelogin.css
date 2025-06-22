@@ -9,10 +9,7 @@
 body {
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #eaeff7;
+  background: #f7eeea;
 }
 
 /* BUTTON / INPUT RESET */
@@ -22,10 +19,11 @@ input, button {
   font-family: inherit;
 }
 
+
 /* CONTAINER */
 .cont {
   position: relative;
-  background: #c9def0;
+  background: #8f6e63a4;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
               0 15px 12px rgba(0, 0, 0, 0.22);
   border-radius: 15px;
@@ -37,6 +35,14 @@ input, button {
   display: flex;
   flex-direction: column;
 }
+main{
+  display: flex;
+  justify-center: center;
+  align-items: center;
+  min-height: 80vh;
+  width: 100vw;
+  background: transparent;
+}
 
 /* MOBILE TOGGLE */
 .mobile-toggle {
@@ -44,7 +50,7 @@ input, button {
   justify-content: center;
   gap: 10px;
   padding: 20px 0;
-  background: #c9def0;
+  background: #f0d4c9;
   z-index: 10;
 }
 .mobile-toggle .submit {
@@ -95,7 +101,7 @@ label span {
   display: block;
   font-size: 14px;
   font-weight: 600;
-  color: #505f75;
+  color: #755950;
   text-transform: uppercase;
 }
 input {
@@ -107,13 +113,14 @@ input {
   border-bottom: 1px solid rgba(109, 93, 93, 0.4);
   text-align: center;
 }
+
 button.submit {
   display: block;
   margin: 40px auto 30px;
   width: 260px;
   height: 36px;
   border-radius: 30px;
-  background: rgb(131, 128, 128);
+  background: rgb(134, 100, 84);
   color: #fff;
   font-size: 15px;
   font-weight: 600;
@@ -153,7 +160,7 @@ button.submit:hover {
 /* DESKTOP LAYOUT & ANIMATION */
 @media (min-width: 701px) {
   body {
-    background: #eaeff7;
+    background: #f7eeea;
   }
 
   .cont {
@@ -277,7 +284,7 @@ button.submit:hover {
 @media (min-width: 701px) {
   /* Container size & layout */
   body {
-    background: #eaeff7;
+    background: #f7edea;
   }
 
   .img-btn span.m-in {
@@ -286,5 +293,78 @@ button.submit:hover {
   .cont.s-signup .img-btn span.m-in {
     transform: translateY(0);
   }
+  .form{
+    width: 640px;
+    height: 100%;
+    padding: 50px 30px;
+    overflow-y: auto;
+    background: none;
+  }
 
+}
+
+/* Style for hobbies input fields */
+#hobbies-list-mobile input, #hobbies-list-desktop input {
+  display: block;
+  width: 90%;
+  margin: 6px auto 0 auto;
+  padding: 7px 12px;
+  border: 1px solid #a97c50;
+  border-radius: 6px;
+  background: #f7eeea;
+  color: #4B2E19;
+  font-size: 1em;
+  transition: border-color 0.2s
+}
+
+#hobbies-list-mobile input:focus, #hobbies-list-desktop input:focus{
+  border-color: #663d21e1; 
+  outline: none;
+}
+/* Style for the add hobby button */
+.add-hobby-btn{
+  display: inline-block;
+  margin-top: 8px;
+  padding:6px 14px;
+  background:#6e351abe;
+  color: #4B2E19;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size:0.95em;
+  cursor:pointer;
+  transition: background 0.2s,color 0.2s;
+}
+.add-hobby-btn:hover{
+  background:#ffdb5c;
+  color:#241103;
+}
+
+.hobby-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.remove-hobby-btn {
+  background: #ffc107;
+  color: #4B2E19;
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.remove-hobby-btn:hover {
+  background: #ffdb5c;
+  color: #241103;
 }

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Edit Profile{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Edit Profile</h2>
+  <form method="POST">
+    <label>Username:
+      <input type="text" name="username" value="{{ user.username }}" required>
+    </label><br>
+    <label>Email:
+      <input type="email" name="email" value="{{ user.email }}" required>
+    </label><br>
+    <label>Hobbies:</label>
+    <div id="hobbies-list-edit">
+      {% for hobby in user.hobbies %}
+        <div class="hobby-input-wrapper">
+          <input type="text" name="hobbies[]" value="{{ hobby.hobby }}">
+          <button type="button" class="remove-hobby-btn" onclick="this.parentNode.parentNode.removeChild(this.parentNode)">×</button>
+        </div>
+      {% endfor %}
+      {% if not user.hobbies %}
+        <div class="hobby-input-wrapper">
+          <input type="text" name="hobbies[]" placeholder="Enter a hobby">
+          <button type="button" class="remove-hobby-btn" onclick="this.parentNode.parentNode.removeChild(this.parentNode)">×</button>
+        </div>
+      {% endif %}
+    </div>
+    <button type="button" class="add-hobby-btn" onclick="addHobbyField('hobbies-list-edit')">Add another hobby</button>
+    <br><br>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+</div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% endblock %}

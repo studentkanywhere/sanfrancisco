@@ -5,7 +5,7 @@
 {% block content %}
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function()) {
         const users = JSON.parse(localStorage.getItem('users')) || [];
         const currentUserIndex = sessionStorage.getItem('currentUserIndex');
         let user= null;
@@ -21,33 +21,23 @@
             document.getElementById('profileInfo').innerHTML = "<p>Please <a href='/login'>log in</a> to view your profile.</p>"; 
             document.getElementById('profileName').textContent = "User's Profile";
         }  
+    }
 </script>
 
 <div class="container mt-4">
-    <h2 id="profileName">User's Profile</h2>
-    <div id="profileInfo">
-        <p><strong>Name:</strong> <span id="displayName"></span></p>
-        <p><strong>Email:</strong> <span id="displayEmail"></span></p>
-        <p><strong>Hobbies:</strong> <span id="displayHobbies"></span></p>
-    </div>
+  <h2>Welcome, {{ user.username }}</h2>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <h4>Hobbies:</h4>
+  <ul>
+    {% if user.hobbies %}
+      {% for hobby in user.hobbies %}
+        <li>{{ hobby.hobby }}</li>
+      {% endfor %}
+    {% else %}
+      <li>No hobbies listed.</li>
+    {% endif %}
+  </ul>
+  <a href="{{ url_for('edit_profile') }}" class="btn btn-secondary mt-3">Edit Profile</a>
+  <a href="{{ url_for('logout') }}" class="btn btn-danger mt-3 ms-2">Logout</a>
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the last signed-up or logged-in user (for demo, using the last user in localStorage)
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    // You may want to store the "current user" in localStorage/sessionStorage on login for a real app
-    const user = users[users.length - 1];
-
-    if (user) {
-        document.getElementById('profileName').textContent = user.username + "'s Profile";
-        document.getElementById('displayName').textContent = user.username || '';
-        document.getElementById('displayEmail').textContent = user.email || '';
-        document.getElementById('displayHobbies').textContent = user.hobby || '';
-    } else {
-        document.getElementById('profileInfo').innerHTML = "<p>No user info found. Please sign up or log in.</p>";
-    }
-});
-</script>
-
-{% endblock %}}
+{% endblock %}

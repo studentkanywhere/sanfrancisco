@@ -66,3 +66,27 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+window.addHobbyField = function(containerId) {
+  const container = document.getElementById(containerId);
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'hobby-input-wrapper';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.name = 'hobbies[]';
+  input.placeholder = 'Enter a hobby';
+  input.style.marginTop = '5px';
+
+  const removeBtn = document.createElement('button');
+  removeBtn.type = 'button';
+  removeBtn.className = 'remove-hobby-btn';
+  removeBtn.innerHTML = '×';
+  removeBtn.onclick = function() {
+    container.removeChild(wrapper);
+  };
+
+  wrapper.appendChild(input);
+  wrapper.appendChild(removeBtn);
+  container.appendChild(wrapper);
+};

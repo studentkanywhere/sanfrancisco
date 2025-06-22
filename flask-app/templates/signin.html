@@ -29,6 +29,7 @@
         <!-- mobile sign-in -->
         <div class="form sign-in mobile">
           <h2>Sign In</h2>
+          <form method="POST" action="/signin">
           <label>
             <span>Email Address</span>
             <input type="email" name="email">
@@ -37,7 +38,8 @@
             <span>Password</span>
             <input type="password" name="password">
           </label>
-          <button class="submit" type="button">Sign In</button>
+          <button class="submit" type="submit">Sign In</button>
+        </form>
           <div class="social-media">
             <ul>
               <li>
@@ -48,10 +50,12 @@
         </div>
 
         <!-- mobile sign-up -->
+
         <div class="form sign-up mobile">
           <h2>Sign Up</h2>
+        <form method="POST" action="/signup">
           <label>
-            <span>Name</span>
+            <span>Username</span>
             <input type="text" name="name">
           </label>
           <label>
@@ -66,7 +70,18 @@
             <span>Confirm Password</span>
             <input type="password" name="confirm_password">
           </label>
-          <button class="submit" type="button">Sign Up Now</button>
+          <label>
+            <span>Hobbies</span>
+            <div id="hobbies-list-mobile">
+             <div class="hobby-input-wrapper">
+              <input type="text" name="hobbies[]" placeholder="Enter a hobby">
+              <button type="button" class="remove-hobby-btn" onclick="this.parentNode.parentNode.removeChild(this.parentNode)">×</button>
+            </div>
+            </div>
+            <button type="button" class="add-hobby-btn" onclick="addHobbyField('hobbies-list-mobile')">Add another hobby</button>
+          </label>
+          <button class="submit" type="confirm">Sign Up Now</button>
+        </form>
         </div>
       </div>
     </div>
@@ -74,6 +89,7 @@
     <!-- DESKTOP SIGN-IN -->
     <div class="form sign-in desktop">
       <h2>Sign In</h2>
+      <form method="POST" action="/signin">
       <label>
         <span>Email Address</span>
         <input type="email" name="email">
@@ -82,7 +98,8 @@
         <span>Password</span>
         <input type="password" name="password">
       </label>
-      <button class="submit" type="button">Sign In</button>
+      <button class="submit" type="submit">Sign In</button>
+      </form>
       <div class="social-media">
         <ul>
           <li>
@@ -97,7 +114,7 @@
       <div class="img">
         <div class="img-text m-up">
           <h1>New here?</h1>
-          <p>Sign up and discover</p>
+          <p>Sign up and discover.</p>
         </div>
         <div class="img-text m-in">
           <h1>One of us?</h1>
@@ -111,8 +128,9 @@
       <!-- original desktop sign-up -->
       <div class="form sign-up desktop">
         <h2>Sign Up</h2>
+       <form method="POST" action="/signup">
         <label>
-          <span>Name</span>
+          <span>Username</span>
           <input type="text" name="name">
         </label>
         <label>
@@ -127,7 +145,20 @@
           <span>Confirm Password</span>
           <input type="password" name="confirm_password">
         </label>
-        <button class="submit" type="button">Sign Up Now</button>
+        <!-- For desktop sign-up -->
+
+        <label>
+          <span>Hobbies</span>
+            <div id="hobbies-list-desktop">
+             <div class="hobby-input-wrapper">
+               <input type="text" name="hobbies[]" placeholder="Enter a hobby">
+               <button type="button" class="remove-hobby-btn" onclick="this.parentNode.parentNode.removeChild(this.parentNode)">×</button>
+             </div>
+            </div>
+              <button type="button" class="add-hobby-btn" onclick="addHobbyField('hobbies-list-desktop')">Add another hobby</button>
+        </label>
+        <button class="submit" type="submit">Sign Up Now</button>
+       </form>
       </div>
     </div>
   </div>

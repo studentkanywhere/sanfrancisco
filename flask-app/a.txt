@@ -1,0 +1,9 @@
+
+    if (user) {
+        document.getElementById('profileName').textContent = user.username + "'s Profile";
+        document.getElementById('displayName').textContent = user.username || '';
+        document.getElementById('displayEmail').textContent = user.email || '';
+        document.getElementById('displayHobbies').textContent = user.hobby || '';
+    } else {
+        document.getElementById('profileInfo').innerHTML = "<p>No user info found. Please sign up or log in.</p>";
+    }

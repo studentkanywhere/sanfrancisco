@@ -50,19 +50,33 @@
     <header>
         <h1>Welcome to Pursuit!!</h1>
         <p>This is an app where users are free to socialise about their various hobbies and interests.</p>
-        <p>Feel free to login if you already have an account or, Sign up to get started!</p>
-        <p>Once you sign in, keep in mind your password for easy login later on.</p>
-        <p>Once logged in, you can customize your profile and share your hobbies with others and find people with the same interests as you.</p>
         <p>Check out the list of users below to see who else is part of the Pursuit community!</p>
         <p>Happy Pursuing!</p>
-        
-        
     </header>
     
 
     <h2>Users</h2>
      <p id="usersp">Here is a list of users' profiles who have already signed up.</p>
-    <ul id="userList"></ul>
+    <ul id="userList">
+        {% for user in users %}
+           <li>
+              <strong>{{ user.username }}</strong>
+              {% if user.hobbies %}
+                <ul>
+                    {% for hobby in user.hobbies %}
+                        <li>Hobby - {{ hobby.hobby }}</li>
+                    {% endfor %}
+                </ul>
+              {% else %}
+              <ul>
+                <li>No hobbies listed.</li>
+              </ul>
+              {% endif %}
+            </li> 
+        {% else %}
+           <li>No users yet.</li>
+        {% endfor %}
+    </ul>
 </div>
 
 
