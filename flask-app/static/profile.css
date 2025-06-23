@@ -120,3 +120,13 @@
     align-items: center;
     min-height: 70vh;
 }
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 18px auto;
+    border: 2px solid #e0c9a6;
+}

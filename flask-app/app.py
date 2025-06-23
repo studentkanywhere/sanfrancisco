@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+import os
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = 'static/profile_pics'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -12,7 +17,9 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), nullable=False)
-    password = db.Column(db.String(120), nullable=False)  # <-- Add this line
+    password = db.Column(db.String(120), nullable=False) 
+    about_me = db.Column(db.Text, default="") 
+    profile_pic = db.Column(db.String(120), default="default.png")  # <-- Add this line
     hobbies = db.relationship('Hobby', backref='user', lazy=True)
 
 class Hobby(db.Model):
@@ -89,6 +96,7 @@ def edit_profile():
     if request.method == 'POST':
         username = request.form['username']
         email = request.form['email']
+        about_me = request.form.get('about_me', '')
         hobbies = request.form.getlist('hobbies[]')
         # Check for username/email conflicts (excluding current user)
         if User.query.filter(User.username == username, User.id != user.id).first():
@@ -100,7 +108,19 @@ def edit_profile():
 
         user.username = username
         user.email = email
-
+        user.about_me = about_me 
+        
+        about_me = db.Column(db.Text, default="")
+        
+        # Handle profile picture upload
+        if 'profile_pic' in request.files:
+            file = request.files['profile_pic']
+            if file and file.filename:
+                filename = secure_filename(file.filename)
+                filepath = os.path.join(app.root_path, UPLOAD_FOLDER, filename)
+                file.save(filepath)
+                user.profile_pic = filename
+                
         # Update hobbies: remove old, add new
         Hobby.query.filter_by(user_id=user.id).delete()
         for h in hobbies:

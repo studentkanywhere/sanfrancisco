@@ -10,8 +10,11 @@
 
 <div class="center-profile-container mt-4">
  <div class="profile-card">
+  <img src="{{ url_for('static', filename='profile_pics/' ~ (user.profile_pic or 'default.png')) }}" alt="Profile Picture" class="profile-pic mb-3" style="width:120px; height:120px; object-fit:cover; border-radius:50%;">
+  
   <h2>Welcome, {{ user.username }}</h2>
   <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>About Me:</strong> {{ user.about_me or "No information provided." }}</p>
   <h4>Hobbies:</h4>
   <ul>
     {% if user.hobbies %}

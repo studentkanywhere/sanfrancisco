@@ -19,13 +19,19 @@
 <div class="container mt-4">
  <div class="edit-profile-card">
   <h2>Edit Profile</h2>
-  <form method="POST" >
+  <form method="POST" enctype="multipart/form-data" >
+    <label>Profile Picture:
+    <input type="file" name="profile_pic" accept="image/*">
+  </label><br>
     <label>Username:
       <input type="text" name="username" value="{{ user.username }}" required>
     </label><br>
     <label>Email:
       <input type="email" name="email" value="{{ user.email }}" required>
     </label><br>
+    <label>About Me:
+    <textarea name="about_me" rows="4" style="width:100%;">{{ user.about_me }}</textarea>
+  </label><br>
     <label>Hobbies:</label>
     <div id="hobbies-list-edit">
       {% for hobby in user.hobbies %}
