@@ -56,22 +56,32 @@
     
 
     <h2>Users</h2>
-     <p id="usersp">Here is a list of users' profiles who have already signed up.</p>
+    <p><strong>Total users:</strong> {{ users|length }}</p>
+
+     <p id="usersp">Here is a list of users' profiles who have already signed in.</p>
     <ul id="userList">
         {% for user in users %}
            <li>
               <strong>{{ user.username }}</strong>
-              {% if user.hobbies %}
-                <ul>
-                    {% for hobby in user.hobbies %}
-                        <li>Hobby - {{ hobby.hobby }}</li>
-                    {% endfor %}
-                </ul>
-              {% else %}
-              <ul>
-                <li>No hobbies listed.</li>
-              </ul>
-              {% endif %}
+              {% if user.hobbies|length == 1 %}
+  <ul>
+    Hobby:
+    {% for hobby in user.hobbies %}
+      <li>{{ hobby.hobby }}</li>
+    {% endfor %}
+  </ul>
+{% elif user.hobbies|length > 1 %}
+  <ul>
+    Hobbies:
+    {% for hobby in user.hobbies %}
+      <li>{{ hobby.hobby }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <ul>
+    <li>No hobbies listed.</li>
+  </ul>
+{% endif %}
             </li> 
         {% else %}
            <li>No users yet.</li>

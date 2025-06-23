@@ -1,9 +1,25 @@
 {% extends "base.html" %}
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+{% endblock %}
 {% block title %}Edit Profile{% endblock %}
 {% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-info" role="alert">
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
 <div class="container mt-4">
+ <div class="edit-profile-card">
   <h2>Edit Profile</h2>
-  <form method="POST">
+  <form method="POST" >
     <label>Username:
       <input type="text" name="username" value="{{ user.username }}" required>
     </label><br>
@@ -29,6 +45,7 @@
     <br><br>
     <button type="submit" class="btn btn-primary">Save Changes</button>
   </form>
+ </div>
 </div>
 <script src="{{ url_for('static', filename='app.js') }}"></script>
 {% endblock %}

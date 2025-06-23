@@ -1,30 +1,15 @@
 {% extends "base.html" %}
 
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+{% endblock %}
 {% block title %}Profile - Pursuit{% endblock %}
 
 {% block content %}
 
-<script>
-    document.addEventListener('DOMContentLoaded', function()) {
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const currentUserIndex = sessionStorage.getItem('currentUserIndex');
-        let user= null;
-        if (currentUserIndex !== null && users[currentUserIndex]) {
-            user = users[currentUserIndex];
-        } 
-        if (user) {
-            document.getElementById('profileName').textContent = user.username + "'s Profile";
-            document.getElementById('displayName').textContent = user.username || '';
-            document.getElementById('displayEmail').textContent = user.email || '';
-            document.getElementById('displayHobbies').textContent = user.hobby || '';
-        } else {
-            document.getElementById('profileInfo').innerHTML = "<p>Please <a href='/login'>log in</a> to view your profile.</p>"; 
-            document.getElementById('profileName').textContent = "User's Profile";
-        }  
-    }
-</script>
 
-<div class="container mt-4">
+<div class="center-profile-container mt-4">
+ <div class="profile-card">
   <h2>Welcome, {{ user.username }}</h2>
   <p><strong>Email:</strong> {{ user.email }}</p>
   <h4>Hobbies:</h4>
@@ -38,6 +23,31 @@
     {% endif %}
   </ul>
   <a href="{{ url_for('edit_profile') }}" class="btn btn-secondary mt-3">Edit Profile</a>
-  <a href="{{ url_for('logout') }}" class="btn btn-danger mt-3 ms-2">Logout</a>
-</div>
+  <a href="{{ url_for('change_password') }}" class="btn btn-warning mt-3 ms-2">Change Password</a>
+  <a href="{{ url_for('logout') }}" class="btn btn-danger mt-3 ms-2  align-items-center"><span class="material-symbols-outlined">
+logout
+</span>
+Logout</a>
+<a href="{{ url_for('delete_account') }}" class="btn btn-outline-danger mt-3 ms-2">Delete Account</a>
+ </div>
+  </div>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div id="popup-alert" class="popup-alert">
+      <div class="popup-content">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+        <button onclick="document.getElementById('popup-alert').style.display='none'" class= "popup-close">OK</button>
+      </div>
+    </div>
+    <script>
+      window.onload = function(){
+        var popup = document.getElementById('popup-alert');
+        if (popup) popup.style.display = 'flex';
+      }
+    </script>
+  {% endif %}
+{% endwith %}
 {% endblock %}

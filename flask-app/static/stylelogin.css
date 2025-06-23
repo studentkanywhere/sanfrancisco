@@ -37,7 +37,7 @@ input, button {
 }
 main{
   display: flex;
-  justify-center: center;
+  justify-content: center;
   align-items: center;
   min-height: 80vh;
   width: 100vw;

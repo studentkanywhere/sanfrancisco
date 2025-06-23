@@ -8,10 +8,6 @@
   <title>Login & Registration Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link 
-    href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" 
-    rel="stylesheet"
-  >
-  <link 
     rel="stylesheet" 
     href="{{ url_for('static', filename='stylelogin.css') }}"
   >
@@ -39,11 +35,14 @@
             <input type="password" name="password">
           </label>
           <button class="submit" type="submit">Sign In</button>
-        </form>
+          </form>
+          <a href="{{ url_for('admin') }}" class="btn btn-warning mt-3 w-100">Go to Admin Panel</a>
           <div class="social-media">
             <ul>
               <li>
-                <img src="{{ url_for('static', filename='1ou.jpg') }}" alt="Social">
+<span class="material-symbols-outlined">
+lock_person
+</span>
               </li>
             </ul>
           </div>
@@ -100,10 +99,13 @@
       </label>
       <button class="submit" type="submit">Sign In</button>
       </form>
+      <a href="{{ url_for('admin') }}" class="btn btn-warning mt-3 w-100">Go to Admin Panel</a>
       <div class="social-media">
         <ul>
           <li>
-            <img src="{{ url_for('static', filename='1ou.jpg') }}" alt="Social">
+<span class="material-symbols-outlined">
+lock_person
+</span>
           </li>
         </ul>
       </div>
@@ -163,7 +165,39 @@
     </div>
   </div>
 
+<script>
+window.onload = function() {
+  // If you have a toggle function, trigger it here
+  // For example, if you use classes to show/hide forms:
+  document.getElementById('showSignIn').click();
+  // If you use a different mechanism, adjust accordingly
+  // Also show the popup if needed
+  var popup = document.getElementById('popup-alert');
+  if (popup) popup.style.display = 'flex';
+}
+</script>
+
   <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div id="popup-alert" class="popup-alert">
+      <div class="popup-content">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+        <button onclick="document.getElementById('popup-alert').style.display='none'" class="popup-close">OK</button>
+      </div>
+    </div>
+    <script>
+      window.onload = function(){
+        var popup = document.getElementById('popup-alert');
+        if (popup) popup.style.display = 'flex';
+      }
+    </script>
+  {% endif %}
+{% endwith %}
 
 
 {% endblock %}

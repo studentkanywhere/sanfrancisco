@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+{% endblock %}
+{% block title %}Delete Account{% endblock %}
+{% block content %}
+<div class="center-profile-container">
+  <div class="edit-profile-card">
+    <h2>Delete Account</h2>
+    <form method="POST">
+      <p>Type your username (<strong>{{ user.username }}</strong>) and password to confirm account deletion.</p>
+      <label>Username:
+        <input type="text" name="username" required>
+      </label><br>
+      <label>Password:
+        <input type="password" name="password" required>
+      </label><br>
+      <p class="mt-3 mb-1 text-danger">
+        Please type the following phrase to confirm:<br>
+        <strong>I understand that my account will be deleted permanently and cannot be retrieved.</strong>
+      </p>
+      <input type="text" name="delete_clause" required placeholder="Type the phrase exactly">
+      <br>
+      <button type="submit" class="btn btn-danger mt-2">Delete Account</button>
+      <a href="{{ url_for('profile') }}" class="btn btn-secondary mt-2 ms-2">Cancel</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

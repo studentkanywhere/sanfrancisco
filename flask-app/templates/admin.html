@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel{% endblock %}
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+  <style>
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    th { background: #f7eeea; }
+    td input, td select { width: 100%; }
+  </style>
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Admin Panel: User Management</h2>
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password (hashed)</th>
+        <th>Hobbies</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <form method="POST" action="{{ url_for('edit_user', user_id=user.id) }}">
+          <td>{{ user.id }}</td>
+          <td><input type ="text" name= "username" value ="{{ user.username }}"></td>
+          <td><input type="email" name="email" value= "{{ user.email }}"></td>
+          <td><input type= "text" name = "password" value="{{ user.password }}"></td>
+          <td>
+            <input type="text" name="hobbies" value="{{ ', '.join(hobbies[user.id]) }}">
+            <small>(comma separated)</small>
+          </td>
+          <td>
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+          </td>
+        </form>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<style>
+    /* Make admin panel table buttons smaller */
+.admin-table .btn {
+    width: auto;
+    min-width: 60px;
+    max-width: 100px;
+    padding: 4px 10px;
+}
+</style>
+{% endblock %}

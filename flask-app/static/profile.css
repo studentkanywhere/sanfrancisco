@@ -1,0 +1,122 @@
+/* Profile and Edit Profile Card Styles*/
+.profile-card, .edit-profile-card {
+    background: #fff8f0;
+    border: 1.5px solid #e0c9a6;
+    border-radius: 14px;
+    max-width: 480px;
+    margin: 40px auto 0 auto;
+    padding: 32px 28px 28px 28px;
+    box-shadow: 0 4px 16px rgba(174, 139, 92, 0.10);
+}
+
+.profile-card h2, .edit-profile-card h2{
+    color: #6e351a;
+    font-size: 2em;
+    margin-bottom: 18px;
+    text-align: center;
+    font-family: 'Nunito', Arial, sans-serif;
+}
+
+.profile-card p, .edit-profile-card p, .edit-profile-card label {
+    color:#4B2E19;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    font-family: 'Nunito', Arial, sans-serif;
+}
+
+.profile-card ul, .edit-profile-card ul {
+    margin-left: 0;
+    padding-left: 18px;
+
+}
+
+.profile-card ul li, .edit-profile-card ul li{
+    color: #a97c50;
+    font-size: 1em;
+    margin-bottom: 4px;
+    font-family: 'Nunito', Arial, sans-serif;
+}
+
+.profile-card .btn, .edit-profile-card .btn{
+    margin-top: 18px;
+    margin-right: 8px;
+    font-family: 'Nunito', Arial, sans-serif;
+}
+
+.edit-profile-card form {
+    margin-top:18px;
+}
+
+.edit-profile-card input[type="text"],
+.edit-profile-card input[type="email"]{
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    border: 1px solid #a97c50;
+    border-radius: 6px;
+    background: #f7eeea;
+    color: #4B2E19;
+    font-size: 1em;
+    font-family: 'Nunita', Arial, sans-serif;
+    transition: border-color 0.2s;
+}
+
+.edit-profile-card input[type="text"]:focus,
+.edit-profile-card input[type="email"]:focus {
+    border-color: #663d21e1;
+    outline: none;
+}
+
+.edit-profile-card .add-hobby-btn {
+    background: #ffc107;
+    color: #4B2E19;
+    border: none;
+    border-radius : 4px;
+    font-weight: 600;
+    font-size: 0.95 em;
+    cursor: pointer;
+    margin-top: 8px;
+    padding: 6px 14px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.edit-profile-card .add-hobby-btn:hover {
+    background: #ffdb5c;
+    color:#241103;
+}
+
+.edit-profile-card .hobby-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.edit-profile-card .remove-hobby-btn{
+    background: #ffc107;
+    color: #4B2E19;
+    border: none;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+    margin-left: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.edit-profile-card .remove-hobby-btn:hover{
+    background: #ffdb5c;
+    color: #241103;
+}
+.center-profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}

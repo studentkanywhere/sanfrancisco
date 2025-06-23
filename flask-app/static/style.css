@@ -20,7 +20,7 @@ h1 {
 }
 footer{
     flex-shrink: 0;
-    width: 100vw;
+    width: 100%;
     text-align: center;
     background: #241103de;
     color: #fff;
@@ -36,6 +36,14 @@ h2 {
     font-size: 2.2em;
     margin-top: 10px;
 }
+
+.page-container {
+    max-width: 900px;   /* match your carousel image width */
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
     p {
     color: rgb(143, 61, 36);
     font-size: 1em;
@@ -136,6 +144,34 @@ h2 {
     transition: background-color 0.3s ease;
     height: 25px;
 }
+html, body {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+    width: 100%;
+    text-align: center;
+    background: #241103de;
+    color: #fff;
+    padding: 10px 0;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    margin-top: 40px;
+}
+
 
 /* Navbar styles */
 #navbar {
@@ -143,15 +179,15 @@ h2 {
     padding: 0;
     width: 100%;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    max-height: 40px;
-    min-height: 30px;
+    max-height: 80px;
+    min-height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     z-index: 1000;
     }
 .navbody{
@@ -199,13 +235,45 @@ h2 {
     align-items: center;
     height: 100%;
 }
-.navbar-search .search-bar{
-    height:22px;
-    font-size: 1em;
-    padding:0 8px;
-    border-radius: 4px;
+.navbar-search {
+  position: relative;
+}
+
+
+.search-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a97c50;
+  font-size: 1.3em;
+  pointer-events: none;
+}
+.navbar-search .search-bar {
+    height: 26px;                /* Thicker input */
+    font-size: 1.1em;
+    padding: 0 12px 0 1.6em;     /* Less left padding for icon, more right for text */
+    border-radius: 6px;
     border: 1px solid #ccc;
     margin: 0 8px;
+    width: 260px;                /* Longer input */
+    min-width: 120px;
+    max-width: 340px;
+    transition: width 0.2s, height 0.2s;
+}
+@media (min-width: 900px) {
+  .navbar-search .search-bar {
+      height: 36px;
+      font-size: 1.1em;
+      padding: 0 12px 0 1.9em;
+      border-radius: 6px;
+      width: 540px;
+      min-width: 520px;
+      max-width: 720px;
+  }
+  .search-icon {
+      left: 16px;
+  }
 }
 .navbar-buttons{
     display:flex;
@@ -245,18 +313,7 @@ h2 {
 .logo-text{
     display:none;
 }
-.navbar-search .search-bar{
-    height: 22px;
-    font-size: 1em;
-    padding:0 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin: 0 8px;
-    width: 110px;
-    min-width: 70px;
-    max-width: 160px;
-    transition: width 0.2s;
-}
+
 .accountDropdown{
     align-items: right !important;
     justify-content: right !important;
@@ -303,7 +360,39 @@ h2 {
     }
 }
 
-/* users in home oage css */
+@media (max-width: 700px) {
+  .navbar-row {
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: 0 4px;
+    gap: 0.3rem;
+  }
+  .navbar-logo .logo-text {
+    font-size: 1em;
+    padding-right: 4px;
+  }
+  .navbar-links {
+    gap: 0.5rem !important;
+  }
+  .navbar-search {
+    min-width: 60px;
+    max-width: 120px;
+    margin: 0 2px !important;
+  }
+  .dropdown .btn {
+    padding: 2px 6px;
+    font-size: 1em;
+  }
+  .dropdown .material-symbols-outlined {
+    font-size: 1.4em !important;
+  }
+  .dropdown .d-sm-inline {
+    display: none !important;
+  }
+}
+
+
+/* users in home page css */
 /* Style for the users section */
 #userList {
   list-style: none;
@@ -351,7 +440,44 @@ h2 {
 #usersp {
   color: #a97c50;
   margin-bottom: 18px ;
-
+}
 #userList, #userList * {
   font-family: 'Nunito', Arial, sans-serif;
+}
+/* Till here is user css*/
+
+/* css of popup */
+.popup-alert {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+    align-items: center;
+    justify-content: center;
+}
+.popup-content {
+    background: #fff8f0;
+    color: #a94442;
+    border: 2px solid #e0c9a6;
+    border-radius: 10px;
+    padding: 32px 28px 18px 28px;
+    font-size: 1.2em;
+    text-align: center;
+    min-width: 260px;
+    box-shadow: 0 4px 16px rgba(174, 139, 92, 0.10);
+}
+.popup-close {
+    margin-top:18px;
+    background: #ffc107;
+    color: #4B2E19;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 22px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+}
+.popup-close:hover {
+    background: #ffdb5c;
 }
