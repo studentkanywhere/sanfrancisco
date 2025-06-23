@@ -1,6 +1,6 @@
-# Flask Application for Social Hobbies
+# Pursuit
 
-This project is a simple Flask web application that allows users to share their hobbies and interests. Users can enter their name, favorite hobby, and email address, which will be displayed on the page.
+This project is a simple Flask web application that allows users to share their hobbies and interests. Users can enter their name and favorite hobby which will be displayed on the main page.
 
 ## Project Structure
 
@@ -20,17 +20,11 @@ flask-app
 
 1. **Clone the repository**:
    ```
-   git clone <repository-url>
+   git clone https://github.com/studentkanywhere/sanfrancisco
    cd flask-app
    ```
 
-2. **Create a virtual environment** (optional but recommended):
-   ```
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
-
-3. **Install the required packages**:
+2. **Install the required packages**:
    ```
    pip install -r requirements.txt
    ```
@@ -40,14 +34,14 @@ flask-app
 To run the Flask application, execute the following command in your terminal:
 
 ```
-python app.py
+python app.py 
 ```
 
-The application will be accessible at `http://127.0.0.1:5000/`.
+The application will be accessible at `http://<ipaddress>:5000/`.
 
 ## Usage
 
-- Open your web browser and navigate to the application URL.
+- Open your web browser and navigate to the application URL (Currently not deployed).
 - Enter your name, favorite hobby, and email address in the provided fields.
 - Click the "Submit" button to see your entry added to the list of users.
 
